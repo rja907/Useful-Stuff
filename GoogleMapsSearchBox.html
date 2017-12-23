@@ -1,0 +1,22 @@
+<!-- A simple input search box using Google Maps API for your website! -->
+
+  <body>
+    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+    <script>
+      function initAutocomplete() {
+        var input = document.getElementById('pac-input');
+        var searchBox = new google.maps.places.SearchBox(input);
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initAutocomplete"
+         async defer></script>
+  </body>
+  
+  <!-- Yes, that is it!
+       You can get your own API_KEY by going to the following link:
+       https://developers.google.com/maps/documentation/javascript/get-api-key
+       Also, if you want to understand the response, visit this link:
+       https://developers.google.com/places/web-service/details
+  -->
+  
+  
