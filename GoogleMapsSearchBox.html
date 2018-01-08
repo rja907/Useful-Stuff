@@ -6,6 +6,24 @@
       function initAutocomplete() {
         var input = document.getElementById('pac-input');
         var searchBox = new google.maps.places.SearchBox(input);
+        searchBox.addListener('places_changed', function() {
+          var places = searchBox.getPlaces();
+          var address = places[0].formatted_address.split(', ');
+          var lengthOfLocationArray = address.length;
+          vm.useful.location = {};
+          vm.useful.location.country = address[lengthOfLocationArray-1];
+          vm.useful.location.state = address[lengthOfLocationArray-2];
+          vm.useful.location.city = address[lengthOfLocationArray-3];
+          vm.useful.location.locality = address[lengthOfLocationArray-4];
+          vm.useful.location.latitude = places[0].geometry.location.lat();
+          vm.useful.location.longitude = places[0].geometry.location.lng();
+          console.log(vm.useful.location);
+          //console.log(vm.useful.country+'\n'+vm.useful.state+'\n'+vm.useful.city +'\n'+vm.useful.locality);
+          console.log(useful); //All the info you need! 
+          if (places.length == 0) {
+            return;
+          }
+      });
       }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initAutocomplete"
