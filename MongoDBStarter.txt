@@ -1,0 +1,108 @@
+Last login: Tue Jan  9 12:50:39 on ttys001
+Rajs-MacBook-Pro:~ raj$ cd Desktop
+Rajs-MacBook-Pro:Desktop raj$ mongo
+MongoDB shell version v3.4.10
+connecting to: mongodb://127.0.0.1:27017
+MongoDB server version: 3.4.10
+Server has startup warnings: 
+2018-01-08T11:04:30.133+0530 I CONTROL  [initandlisten] 
+2018-01-08T11:04:30.133+0530 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2018-01-08T11:04:30.133+0530 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2018-01-08T11:04:30.133+0530 I CONTROL  [initandlisten]
+> //Show current collections 
+> show collections
+> //Show current Databases
+> show dbs
+admin       0.000GB
+local       0.000GB
+mydatabase  0.001GB
+> //inserting users
+> db.users.insert({"name":"John", "email":"john@doe.com"})
+WriteResult({ "nInserted" : 1 })
+> db.users.insert({"name":"Jane", "email":"jane@doe.com"})
+WriteResult({ "nInserted" : 1 })
+> db.users.find().pretty()
+{
+	"_id" : ObjectId("5a5486937d54e6ce4c6461d1"),
+	"name" : "John",
+	"email" : "john@doe.com"
+}
+{
+	"_id" : ObjectId("5a5486a37d54e6ce4c6461d2"),
+	"name" : "Jane",
+	"email" : "jane@doe.com"
+}
+> //inserting a user with a phone number
+> db.users.insert({"name":"Raj", "email":"kmrrajj@gmail.com", "phone":100100101})
+WriteResult({ "nInserted" : 1 })
+> db.users.find().pretty()
+{
+	"_id" : ObjectId("5a5486937d54e6ce4c6461d1"),
+	"name" : "John",
+	"email" : "john@doe.com"
+}
+{
+	"_id" : ObjectId("5a5486a37d54e6ce4c6461d2"),
+	"name" : "Jane",
+	"email" : "jane@doe.com"
+}
+{
+	"_id" : ObjectId("5a54873d7d54e6ce4c6461d3"),
+	"name" : "Raj",
+	"email" : "kmrrajj@gmail.com",
+	"phone" : 100100101
+}
+> //Updating an already existing user by providing number 
+> db.users.update({"name":"John"}, {$set:{"phone":200200202}}, {upsert:true})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.users.find().pretty()
+{
+	"_id" : ObjectId("5a5486937d54e6ce4c6461d1"),
+	"name" : "John",
+	"email" : "john@doe.com",
+	"phone" : 200200202
+}
+{
+	"_id" : ObjectId("5a5486a37d54e6ce4c6461d2"),
+	"name" : "Jane",
+	"email" : "jane@doe.com"
+}
+{
+	"_id" : ObjectId("5a54873d7d54e6ce4c6461d3"),
+	"name" : "Raj",
+	"email" : "kmrrajj@gmail.com",
+	"phone" : 100100101
+}
+> //Removing a user
+> db.users.remove({"name":"Jane"})
+WriteResult({ "nRemoved" : 1 })
+> db.users.find().pretty()
+{
+	"_id" : ObjectId("5a5486937d54e6ce4c6461d1"),
+	"name" : "John",
+	"email" : "john@doe.com",
+	"phone" : 200200202
+}
+{
+	"_id" : ObjectId("5a54873d7d54e6ce4c6461d3"),
+	"name" : "Raj",
+	"email" : "kmrrajj@gmail.com",
+	"phone" : 100100101
+}
+> show dbs
+admin       0.000GB
+local       0.000GB
+mydatabase  0.001GB
+test        0.000GB
+> show collections
+users
+> //Dropping the whole database.
+> db.dropDatabase()
+{ "dropped" : "test", "ok" : 1 }
+> show dbs
+admin       0.000GB
+local       0.000GB
+mydatabase  0.001GB
+> exit
+bye
+Rajs-MacBook-Pro:Desktop raj$ 
