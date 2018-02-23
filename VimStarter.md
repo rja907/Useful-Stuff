@@ -5,4 +5,4 @@ Vim - the ubiquitous text editor. Vim is a highly configurable text editor built
 Type `vi` on your Terminal (MacOS) to run it.
 
 The easiest Vim starter guide ever!
-![Check this out][https://i.imgur.com/Rg1no1H.png]
+![Check this out](https://i.imgur.com/Rg1no1H.png)
