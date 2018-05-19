@@ -6,4 +6,4 @@ Mindfulness is not a do-it-later thing. It should be a priority.
 
 You might want to refer to :
 
-[this](https://github.com/mindfulness-at-the-computer/mindfulness-at-the-computer), or [this](https://github.com/crsmithdev/hint)
+[this](https://github.com/mindfulness-at-the-computer/mindfulness-at-the-computer), or [this](https://github.com/crsmithdev/hint).
